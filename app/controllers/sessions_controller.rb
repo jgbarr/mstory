@@ -13,8 +13,12 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
-      redirect_to user
+      redirect_back_or user
     end
+  end
+
+  def deny_access
+    redirect_to signin_path, :notice => "Please sign in to access this page."
   end
 
   def destroy
