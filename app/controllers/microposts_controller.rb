@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
+  before_filter :authorized_user, :only => :destroy
 
 
   #stub for future dev of public streams
