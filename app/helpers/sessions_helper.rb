@@ -35,6 +35,15 @@ module SessionsHelper
     clear_return_to
   end
 
+  def authenticate
+    deny_access unless signed_in?
+  end
+
+  def deny_access
+    store_location
+    redirect_to signin_path, :notice => "Please sign in to access this page."
+  end
+
   private
     #puts the requested URL in the session variable under the key :return_to
     def store_location
