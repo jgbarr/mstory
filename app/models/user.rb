@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :microposts, :dependent => :destroy
 
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name,  :presence => true,
@@ -47,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    # This is preliminary. See Chapter 12 for the full implementation.
+    # This is preliminar
     Micropost.where("user_id = ?", id)
   end
 
