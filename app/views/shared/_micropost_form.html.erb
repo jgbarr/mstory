@@ -2,7 +2,8 @@
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
     <%= f.text_area :content %>
-    <%= f.file_field :image %>
+    <%=raw s3_swf_upload_tag %>
+<input type="submit" value="Start Uploading" onclick="s3_swf_1_object.startUploading();" />
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>

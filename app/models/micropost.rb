@@ -9,7 +9,13 @@ class Micropost < ActiveRecord::Base
   #validates_attachment_presence :image
 
   default_scope :order => 'microposts.created_at DESC'
-  has_attached_file :image, :url => "/:class/:attachment/:id/:style_:basename.:extension", :path => ":rails_root/public/:class/:attachment/:id/:style_:basename.:extension"
-  #has_attached_file :photo, :path => ":rails_root/public/:class/:attachment/:id/:style_:basename.:extension"
+  has_attached_file :image,
+    :storage => :s3,
+  :s3_credentials => {
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
+  },
+  :bucket => ENV['S3_BUCKET'],
+  :path => ":attachment/:id"
 
 end
