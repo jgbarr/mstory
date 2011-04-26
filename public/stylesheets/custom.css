@@ -3,7 +3,9 @@
 }
 
 body {
-  background: #550000;
+  /*background: #550000;*/
+  background-image:url('../images/red-checks.gif');
+background-repeat:repeat;
 }
 
 header {
