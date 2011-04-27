@@ -33,9 +33,9 @@ class S3UploadsController < ApplicationController
     ]
 }").gsub(/\n|\r/, '')
 
-    signature = b64_hmac_sha1(secret_key, policy)
+signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), secret_key, policy)).gsub("n","")
 logger.debug secret_key
-logger.info("BLAAAAAA")
+
     respond_to do |format|
       format.xml {
         render :xml => {
